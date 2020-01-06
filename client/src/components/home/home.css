@@ -1,0 +1,75 @@
+.ImageContainer {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.CenteredContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.BackgroundCover {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin:auto;
+  padding:0;
+}
+
+.WhiteCover { 
+  margin-bottom: 8px;
+  background: #ffffff;
+}
+
+.BlackHeadText {
+  font-size: 32px;
+  color: #000000;
+}
+
+.BlackHeadText1 {
+  font-size: 40px;
+  color: #000000;
+}
+
+.WhiteDescText {
+  font-weight: bold;
+  font-size: 16px;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+}
+
+.AbsoluteDiv {
+  position: absolute;
+}
+
+.BlackButton {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.BlueButton {
+  background-color: #103D92;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.SecondHeading {
+  font-weight: bold;
+  font-size: 56px;
+  text-align: center;
+  color: #000000;
+}
+
+.SocialMediaBox {
+  margin: 16px;
+}

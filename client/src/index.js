@@ -1,5 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from "history";
 
-ReactDOM.render(<App />, document.getElementById("App"));
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
+ 
+// invoking browser history function to get browser routing history from the web
+const history = createBrowserHistory();
+
+ReactDOM.render(
+  <Router history={ history }>
+    <App />
+  </Router>
+, document.getElementById("App"));
