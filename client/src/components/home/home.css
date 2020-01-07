@@ -40,7 +40,7 @@
   font-weight: bold;
   font-size: 16px;
   color: #FFFFFF;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .AbsoluteDiv {
@@ -50,7 +50,7 @@
 .BlackButton {
   background-color: #000000;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 16px;
   padding: 8px;
   border-radius: 5px;
 }
@@ -58,7 +58,7 @@
 .BlueButton {
   background-color: #103D92;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 16px;
   padding: 8px;
   border-radius: 5px;
 }
@@ -72,4 +72,8 @@
 
 .SocialMediaBox {
   margin: 16px;
+}
+
+.SecondBox {
+  height: 100vh;
 }

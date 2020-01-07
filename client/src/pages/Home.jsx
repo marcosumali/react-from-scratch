@@ -9,10 +9,10 @@ class Home extends Component {
     return (
       <div className="">
         <div className={ generalStyles.ContainerWrapCenter }>
-          <div className="col-lg-6 col-md-12" style={{ padding: 0 }}>
+          <div id="FirstComponent" className="col-lg-6 col-md-12" style={{ padding: 0 }}>
             <FirstComponent />
           </div>
-          <div className="col-lg-6 col-md-12" style={{ padding: 0 }}>
+          <div id="Register" className="col-lg-6 col-md-12" style={{ padding: 0 }}>
             <SecondComponent />
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import generalStyles from '../../assets/css/general.css';
 import styles from './home.css'
@@ -18,10 +19,12 @@ class First extends Component {
           <div className={ styles.WhiteDescText }>Mari bergabung dengan komunitas pemilik apartemen TPlaza.</div>
           <div className={ generalStyles.ContainerWrapCenter }>
             <div className={ styles.AbsoluteDiv }>
-              <div className={ styles.BlackButton }>
-                <div>Daftar</div>
-              </div>
-            </div>
+              <a href="#Register" style={{ textDecoration: 'none' }}>
+                <div className={ styles.BlackButton }>
+                  <div>Daftar</div>
+                </div>
+              </a>
+           </div>
           </div>
         </div>
       </div>
