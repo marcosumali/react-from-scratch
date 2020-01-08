@@ -58,7 +58,15 @@
 .BlueButton {
   background-color: #103D92;
   color: #ffffff;
+  min-width: 75px;
   font-size: 16px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.GrayButton {
+  background-color: #d3d3d3;
+  min-width: 75px;
   padding: 8px;
   border-radius: 5px;
 }
@@ -76,4 +84,11 @@
 
 .SecondBox {
   height: 100vh;
+}
+
+.InvalidFeedback {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
 }
