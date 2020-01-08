@@ -7,19 +7,36 @@ import styles from './home.css';
 import FacebookSVG from '../svg/Facebook';
 import InstagramSVG from '../svg/Instagram';
 import TwitterSVG from '../svg/Twitter';
-import { handleUserRegistration } from '../../store/user/user.actions';
+import LoadingSVG from '../svg/Loading';
+import { 
+  handleUserRegistrationInput,
+  handleUserRegistrationSubmission, 
+} from '../../store/user/user.actions';
 
 class Second extends Component {
   render() {
-    console.log('from Second', this.props)
+    // console.log('from Second', this.props)
     let {
-      handleUserRegistration
+      handleUserRegistrationInput,
+      handleUserRegistrationSubmission,
+      name,
+      nameInputErrorMessage,
+      tower,
+      towerInputErrorMessage,
+      unit,
+      unitInputErrorMessage,
+      email,
+      emailInputErrorMessage,
+      whatsapp,
+      whatsappInputErrorMessage,
+      isRegistrationLoading,
     } = this.props
+    
     return (
       <div className={ styles.SecondBox }>
         <div className={ generalStyles.ContainerWrapCenter } style={{ height: '100%' }}>
           <div className={ styles.SecondHeading }>DAFTAR</div>
-          <form className={ generalStyles.ContainerWrapCenter }>
+          <form className="needs-validation" className={ generalStyles.ContainerWrapCenter } noValidate>
             <div className="col-12">
               <div className="form-group">
                 <input 
@@ -28,32 +45,42 @@ class Second extends Component {
                   id="name" 
                   aria-describedby="nameHelp" 
                   placeholder="Nama Lengkap"
-                  onChange={ (e) => handleUserRegistration(e) }
+                  value={ name }
+                  onChange={ (e) => handleUserRegistrationInput(e) }
                 />
+                <div className={ styles.InvalidFeedback }>{ nameInputErrorMessage }</div>
               </div>
             </div>
-            <div className="col-4 col-sm-3">
+            <div className="col-5 col-sm-3">
               <div className="form-group">
-                <input 
-                  type="text" 
+                <select 
                   className="form-control" 
                   id="tower" 
-                  aria-describedby="towerHelp" 
-                  placeholder="Tower" 
-                  onChange={ (e) => handleUserRegistration(e) }
-                />
+                  value={ 'Tower' }
+                  onChange={ (e) => handleUserRegistrationInput(e) } placeholder="Tower"
+                >
+                  <option disabled selected>Tower</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                  <option>D</option>
+                  <option>E</option>
+                </select>
+                <div className={ styles.InvalidFeedback }>{ towerInputErrorMessage }</div>
               </div>
             </div>
-            <div className="col-8 col-sm-9" style={{ paddingLeft: 0 }}>
+            <div className="col-7 col-sm-9" style={{ paddingLeft: 0 }}>
               <div className="form-group">
                 <input 
-                  type="text" 
+                  type="number" 
                   className="form-control" 
                   id="unit" 
                   aria-describedby="nomorUnitHelp" 
                   placeholder="Nomor Unit" 
-                  onChange={ (e) => handleUserRegistration(e) }
+                  value={ unit }
+                  onChange={ (e) => handleUserRegistrationInput(e) }
                 />
+                <div className={ styles.InvalidFeedback }>{ unitInputErrorMessage }</div>
               </div>
             </div>
             <div className="col-12">
@@ -64,8 +91,10 @@ class Second extends Component {
                   id="email" 
                   aria-describedby="emailHelp" 
                   placeholder="Email" 
-                  onChange={ (e) => handleUserRegistration(e) }
+                  value={ email }
+                  onChange={ (e) => handleUserRegistrationInput(e) }
                 />
+                <div className={ styles.InvalidFeedback }>{ emailInputErrorMessage }</div>
               </div>
             </div>
             <div className="col-12">
@@ -76,15 +105,30 @@ class Second extends Component {
                   id="phone" 
                   aria-describedby="phoneHelp" 
                   placeholder="Nomor Whatsapp" 
-                  onChange={ (e) => handleUserRegistration(e) }
+                  value={ whatsapp }
+                  onChange={ (e) => handleUserRegistrationInput(e) }
                 />
+                <div className={ styles.InvalidFeedback }>{ whatsappInputErrorMessage }</div>
               </div>
             </div>
             <div className="col-12">
               <div className={ generalStyles.ContainerWrapCenter }>
-                <div className={ styles.BlueButton }>
-                  <div>Daftar</div>
-                </div>
+                {
+                  !isRegistrationLoading ?
+                  <button 
+                    type="submit" 
+                    className={ styles.BlueButton } 
+                    onClick={ (e) => handleUserRegistrationSubmission(e, name, tower, unit, email, whatsapp) }
+                  >
+                    <div>Daftar</div>
+                  </button>
+                  :
+                  <div className={ styles.GrayButton }>
+                    <div className={ generalStyles.ContainerWrapCenter }>
+                      <LoadingSVG height="24px" width="24px" color="#ffffff" />
+                    </div>
+                  </div>
+                }
               </div>
             </div>
           </form>
@@ -110,16 +154,28 @@ class Second extends Component {
 const mapStateToProps = (state) => {
   return {
     name: state.user.name,
+    nameInputErrorMessage: state.user.nameInputErrorMessage,
     tower: state.user.tower,
+    towerInputErrorMessage: state.user.towerInputErrorMessage,
     unit: state.user.unit,
+    unitInputErrorMessage: state.user.unitInputErrorMessage,
     email: state.user.email,
+    emailInputErrorMessage: state.user.emailInputErrorMessage,
     whatsapp: state.user.whatsapp,
+    whatsappInputErrorMessage: state.user.whatsappInputErrorMessage,
+    isRegistrationLoading: state.user.isRegistrationLoading,
   }
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  handleUserRegistration
+  handleUserRegistrationInput,
+  handleUserRegistrationSubmission,
 }, dispatch)
 
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onHello: () => dispatch({ type: "HELLO_SAGA" }),
+//   };
+// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Second);

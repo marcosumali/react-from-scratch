@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { PureComponent } from 'react';
 
 import generalStyles from '../../assets/css/general.css';
 import styles from './home.css'
 
-class First extends Component {
+class First extends PureComponent {
   render() {
     return (
       <div className={ styles.ImageContainer }>
