@@ -2,12 +2,13 @@ import React, { PureComponent } from 'react';
 
 import generalStyles from '../../assets/css/general.css';
 import styles from './home.css'
+import BackgroundImg from '../../assets/images/background.png';
 
 class First extends PureComponent {
   render() {
     return (
       <div className={ styles.ImageContainer }>
-        <img src="/src/assets/images/background.png" alt="Background" style={{ width:'100%', height: '100vh' }} />
+        <img src={ BackgroundImg } alt="Background" style={{ width:'100%', height: '100vh' }} />
         <div className={ styles.CenteredContainer }>
           <div className={ styles.WhiteCover }>
             <div className={ styles.BlackHeadText }>KOMUNITAS</div>

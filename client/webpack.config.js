@@ -1,9 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const autoprefixer = require('autoprefixer');
-const webpack = require('webpack');
-const precss = require('precss');
+// const autoprefixer = require('autoprefixer');
+// const webpack = require('webpack');
+// const precss = require('precss');
 
 // const TransferWebpackPlugin = require('transfer-webpack-plugin');
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -75,25 +76,27 @@ module.exports = {
       //   test: /bootstrap\/dist\/js\/umd\//, use: 'imports-loader?jQuery=jquery'
       // },
       {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
+        test: /\.(png|jpe?g|gif)$/i,
+        use : [
           {
             loader: 'file-loader',
             options: {
-              limit: 8192,
-              name: 'images/[hash]-[name].[ext]'
+              name: '[name].[ext]',
+              // limit: 8192,
+              outputPath: '/img',
+              publicPath: '/img',
             },
-          },
-        ],
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: "svg-inline-loader",
           }
         ]
-      }
+      },
+      // {
+      //   test: /\.svg$/,
+      //   use: [
+      //     {
+      //       loader: "svg-inline-loader",
+      //     }
+      //   ]
+      // }
     ]
   },
   resolve: {
@@ -103,6 +106,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new CleanWebpackPlugin()
     // new webpack.ProvidePlugin({
     //   $: 'jquery',
     //   jQuery: 'jquery',
