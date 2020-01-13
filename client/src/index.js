@@ -10,12 +10,11 @@ import thunk from 'redux-thunk';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 
-
 import App from './App';
-import 'bootstrap/dist/css/bootstrap.css';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import rootSaga from './sagas/saga';
 import firebaseConfig from './configs/firebase.config';
+import './App.css';
  
 // invoking browser history function to get browser routing history from the web
 const history = createBrowserHistory();

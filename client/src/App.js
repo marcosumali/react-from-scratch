@@ -10,9 +10,9 @@ class App extends Component {
         <Switch>
           <Route
             exact path="/" 
-            render={ (props) => (<HomePage {...props} cookies={this.props.cookies}/>) } 
+            render={ () => (<HomePage/>) } 
           />
-          <Route path="*" component="" />
+          {/* <Route path="*" component="" /> */}
         </Switch>
       </div>
     );

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import generalStyles from '../../assets/css/general.css';
-import styles from './home.css';
+import '../../assets/css/general.css';
+import './home.css';
 import FacebookSVG from '../svg/Facebook';
 import InstagramSVG from '../svg/Instagram';
 import TwitterSVG from '../svg/Twitter';
@@ -33,10 +33,10 @@ class Second extends Component {
     } = this.props
     
     return (
-      <div className={ styles.SecondBox }>
-        <div className={ generalStyles.ContainerWrapCenter } style={{ height: '100%' }}>
-          <div className={ styles.SecondHeading }>DAFTAR</div>
-          <form className="needs-validation" className={ generalStyles.ContainerWrapCenter } noValidate>
+      <div className='SecondBox'>
+        <div className='ContainerWrapCenter' style={{ height: '100%' }}>
+          <div className='SecondHeading'>DAFTAR</div>
+          <form className="needs-validation" className='ContainerWrapCenter' noValidate>
             <div className="col-12">
               <div className="form-group">
                 <input 
@@ -48,7 +48,7 @@ class Second extends Component {
                   value={ name }
                   onChange={ (e) => handleUserRegistrationInput(e) }
                 />
-                <div className={ styles.InvalidFeedback }>{ nameInputErrorMessage }</div>
+                <div className='InvalidFeedback'>{ nameInputErrorMessage }</div>
               </div>
             </div>
             <div className="col-5 col-sm-3">
@@ -56,8 +56,8 @@ class Second extends Component {
                 <select 
                   className="form-control" 
                   id="tower" 
-                  value={ 'Tower' }
-                  onChange={ (e) => handleUserRegistrationInput(e) } placeholder="Tower"
+                  onChange={ (e) => handleUserRegistrationInput(e) } 
+                  placeholder="Tower"
                 >
                   <option disabled selected>Tower</option>
                   <option>A</option>
@@ -66,7 +66,7 @@ class Second extends Component {
                   <option>D</option>
                   <option>E</option>
                 </select>
-                <div className={ styles.InvalidFeedback }>{ towerInputErrorMessage }</div>
+                <div className='InvalidFeedback'>{ towerInputErrorMessage }</div>
               </div>
             </div>
             <div className="col-7 col-sm-9" style={{ paddingLeft: 0 }}>
@@ -80,7 +80,7 @@ class Second extends Component {
                   value={ unit }
                   onChange={ (e) => handleUserRegistrationInput(e) }
                 />
-                <div className={ styles.InvalidFeedback }>{ unitInputErrorMessage }</div>
+                <div className='InvalidFeedback'>{ unitInputErrorMessage }</div>
               </div>
             </div>
             <div className="col-12">
@@ -94,7 +94,7 @@ class Second extends Component {
                   value={ email }
                   onChange={ (e) => handleUserRegistrationInput(e) }
                 />
-                <div className={ styles.InvalidFeedback }>{ emailInputErrorMessage }</div>
+                <div className='InvalidFeedback'>{ emailInputErrorMessage }</div>
               </div>
             </div>
             <div className="col-12">
@@ -108,23 +108,23 @@ class Second extends Component {
                   value={ whatsapp }
                   onChange={ (e) => handleUserRegistrationInput(e) }
                 />
-                <div className={ styles.InvalidFeedback }>{ whatsappInputErrorMessage }</div>
+                <div className='InvalidFeedback'>{ whatsappInputErrorMessage }</div>
               </div>
             </div>
             <div className="col-12">
-              <div className={ generalStyles.ContainerWrapCenter }>
+              <div className='ContainerWrapCenter'>
                 {
                   !isRegistrationLoading ?
                   <button 
                     type="submit" 
-                    className={ styles.BlueButton } 
+                    className='BlueButton'
                     onClick={ (e) => handleUserRegistrationSubmission(e, name, tower, unit, email, whatsapp) }
                   >
                     <div>Daftar</div>
                   </button>
                   :
-                  <div className={ styles.GrayButton }>
-                    <div className={ generalStyles.ContainerWrapCenter }>
+                  <div className='GrayButton'>
+                    <div className='ContainerWrapCenter'>
                       <LoadingSVG height="24px" width="24px" color="#ffffff" />
                     </div>
                   </div>
@@ -133,14 +133,14 @@ class Second extends Component {
             </div>
           </form>
           <div className="col-12">
-            <div className={ generalStyles.ContainerWrapCenter }>
-              <div className={ styles.SocialMediaBox }>
+            <div className='ContainerWrapCenter'>
+              <div className='SocialMediaBox'>
                 <FacebookSVG height="36px" width="36px" color="#103D92"/>
               </div>
-              <div className={ styles.SocialMediaBox }>
+              <div className='SocialMediaBox'>
                 <InstagramSVG height="36px" width="36px" color="#103D92"/>
               </div>
-              <div className={ styles.SocialMediaBox }>
+              <div className='SocialMediaBox'>
                 <TwitterSVG height="36px" width="36px" color="#103D92"/>
               </div>
             </div>
