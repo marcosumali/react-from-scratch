@@ -5,15 +5,17 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-// import createSagaMiddleware from 'redux-saga';
-import { reduxFirestore, getFirestore } from 'redux-firestore';
-import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
+// // SAGA
+import createSagaMiddleware from 'redux-saga';
+// // THUNK
+// import thunk from 'redux-thunk';
+// import { reduxFirestore, getFirestore } from 'redux-firestore';
+// import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import rootSaga from './sagas/saga';
-import firebaseConfig from './configs/firebase.config';
+import rootSaga from './sagas';
+// import firebaseConfig from './configs/firebase.config';
 import './App.css';
  
 // invoking browser history function to get browser routing history from the web
@@ -24,18 +26,19 @@ import allReducers from './store';
 
 // declaring and creating store (state management)
 // THUNK
-const store = createStore(
-  allReducers, 
-  compose(
-    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reduxFirestore(firebaseConfig),
-    reactReduxFirebase(firebaseConfig)
-  )
-);
-// // SAGA
-// const sagaMiddleware = createSagaMiddleware();
-// const store = createStore(allReducers, applyMiddleware(sagaMiddleware));
-// sagaMiddleware.run(rootSaga)
+// const store = createStore(
+//   allReducers, 
+//   compose(
+//     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+//     reduxFirestore(firebaseConfig),
+//     reactReduxFirebase(firebaseConfig)
+//   )
+// );
+// SAGA
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(allReducers, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
+
 
 ReactDOM.render(
   <Router history={ history }>

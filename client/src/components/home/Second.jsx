@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import '../../assets/css/general.css';
@@ -9,16 +9,20 @@ import InstagramSVG from '../svg/Instagram';
 import TwitterSVG from '../svg/Twitter';
 import LoadingSVG from '../svg/Loading';
 import { 
-  handleUserRegistrationInput,
-  handleUserRegistrationSubmission, 
+  // handleUserRegistrationInput,
+  // handleUserRegistrationSubmission, 
+  handleUserRegisterAction,
+  handleUserRegisterSubmission
 } from '../../store/user/user.actions';
 
 class Second extends Component {
   render() {
     // console.log('from Second', this.props)
     let {
-      handleUserRegistrationInput,
-      handleUserRegistrationSubmission,
+      // handleUserRegistrationInput,
+      handleUserRegisterInput,
+      // handleUserRegistrationSubmission,
+      handleUserRegisterSub,
       name,
       nameInputErrorMessage,
       tower,
@@ -46,7 +50,7 @@ class Second extends Component {
                   aria-describedby="nameHelp" 
                   placeholder="Nama Lengkap"
                   value={ name }
-                  onChange={ (e) => handleUserRegistrationInput(e) }
+                  onChange={ (e) => handleUserRegisterInput(e) }
                 />
                 <div className='InvalidFeedback'>{ nameInputErrorMessage }</div>
               </div>
@@ -56,7 +60,7 @@ class Second extends Component {
                 <select 
                   className="form-control" 
                   id="tower" 
-                  onChange={ (e) => handleUserRegistrationInput(e) } 
+                  onChange={ (e) => handleUserRegisterInput(e) } 
                   placeholder="Tower"
                 >
                   <option disabled selected>Tower</option>
@@ -78,7 +82,7 @@ class Second extends Component {
                   aria-describedby="nomorUnitHelp" 
                   placeholder="Nomor Unit" 
                   value={ unit }
-                  onChange={ (e) => handleUserRegistrationInput(e) }
+                  onChange={ (e) => handleUserRegisterInput(e) }
                 />
                 <div className='InvalidFeedback'>{ unitInputErrorMessage }</div>
               </div>
@@ -92,7 +96,7 @@ class Second extends Component {
                   aria-describedby="emailHelp" 
                   placeholder="Email" 
                   value={ email }
-                  onChange={ (e) => handleUserRegistrationInput(e) }
+                  onChange={ (e) => handleUserRegisterInput(e) }
                 />
                 <div className='InvalidFeedback'>{ emailInputErrorMessage }</div>
               </div>
@@ -106,7 +110,7 @@ class Second extends Component {
                   aria-describedby="phoneHelp" 
                   placeholder="Nomor Whatsapp" 
                   value={ whatsapp }
-                  onChange={ (e) => handleUserRegistrationInput(e) }
+                  onChange={ (e) => handleUserRegisterInput(e) }
                 />
                 <div className='InvalidFeedback'>{ whatsappInputErrorMessage }</div>
               </div>
@@ -118,7 +122,7 @@ class Second extends Component {
                   <button 
                     type="submit" 
                     className='BlueButton'
-                    onClick={ (e) => handleUserRegistrationSubmission(e, name, tower, unit, email, whatsapp) }
+                    onClick={ (e) => handleUserRegisterSub({ e, name, tower, unit, email, whatsapp} ) }
                   >
                     <div>Daftar</div>
                   </button>
@@ -167,15 +171,21 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  handleUserRegistrationInput,
-  handleUserRegistrationSubmission,
-}, dispatch)
+// // THUNK
+// const mapDispatchToProps = (dispatch) => bindActionCreators({
+//   handleUserRegistrationInput,
+//   handleUserRegistrationSubmission,
+// }, dispatch)
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onHello: () => dispatch({ type: "HELLO_SAGA" }),
-//   };
-// };
+// // SAGA
+const mapDispatchToProps = dispatch => ({
+  handleUserRegisterInput: (data) => {
+    dispatch(handleUserRegisterAction(data))
+  },
+  handleUserRegisterSub: (data) => {
+    dispatch(handleUserRegisterSubmission(data))
+  }
+})
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Second);

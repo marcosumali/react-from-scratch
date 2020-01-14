@@ -1,9 +1,9 @@
 import { validateEmail, validatePhone, formatPhone } from '../../helpers/form';
 import Swal from 'sweetalert2';
 
-const emptyErrorMessage = 'Please fill in.';
-const emailFormatErrorMessage = 'Please provide a valid email.';
-const phoneFormatErrorMessage = 'Please provide a valid whatsapp number.';
+export const emptyErrorMessage = 'Please fill in.';
+export const emailFormatErrorMessage = 'Please provide a valid email.';
+export const phoneFormatErrorMessage = 'Please provide a valid whatsapp number.';
 
 export const handleUserRegistrationInput = (e) => {
   return (dispatch) => {
@@ -25,35 +25,42 @@ export const handleUserRegistrationInput = (e) => {
   }
 }
 
-const setUserName = (data) => {
+export const handleUserRegisterAction = (data) => {
+  return {
+    type: 'HANDLE_USER_REG_INPUT',
+    payload: data
+  }
+}
+
+export const setUserName = (data) => {
   return {
     type: 'SET_USER_NAME',
     payload: data
   }
 }
 
-const setUserTower = (data) => {
+export const setUserTower = (data) => {
   return {
     type: 'SET_USER_TOWER',
     payload: data
   }
 }
 
-const setUserUnit = (data) => {
+export const setUserUnit = (data) => {
   return {
     type: 'SET_USER_UNIT',
     payload: data
   }
 }
 
-const setUserEmail = (data) => {
+export const setUserEmail = (data) => {
   return {
     type: 'SET_USER_EMAIL',
     payload: data
   }
 }
 
-const setUserWhatsapp = (data) => {
+export const setUserWhatsapp = (data) => {
   return {
     type: 'SET_USER_WA',
     payload: data
@@ -109,14 +116,21 @@ export const handleUserRegistrationSubmission = (e, name, tower, unit, email, wh
   }
 }
 
-const setUserRegistrationLoadingStatus = (data) => {
+export const handleUserRegisterSubmission = (data) => {
+  return {
+    type: 'HANDLE_USER_REG_SUB',
+    payload: data
+  }
+}
+
+export const setUserRegistrationLoadingStatus = (data) => {
   return {
     type: 'SET_REGISTER_LOADING_STATUS',
     payload: data
   }
 }
 
-const userRegistrationFormValidation = (name, tower, unit, email, whatsapp) => {
+export const userRegistrationFormValidation = (name, tower, unit, email, whatsapp) => {
   return (dispatch) => {
     let validationStatus = false
     let isEmailValid = validateEmail(email)
@@ -191,35 +205,35 @@ const userRegistrationFormValidation = (name, tower, unit, email, whatsapp) => {
   }
 }
 
-const setUserNameInputErrorMessage = (data) => {
+export const setUserNameInputErrorMessage = (data) => {
   return {
     type: 'SET_USER_NAME_INPUT_ERROR_MESSAGE',
     payload: data
   }
 }
 
-const setUserTowerInputErrorMessage = (data) => {
+export const setUserTowerInputErrorMessage = (data) => {
   return {
     type: 'SET_USER_TOWER_INPUT_ERROR_MESSAGE',
     payload: data
   }
 }
 
-const setUserUnitInputErrorMessage = (data) => {
+export const setUserUnitInputErrorMessage = (data) => {
   return {
     type: 'SET_USER_UNIT_INPUT_ERROR_MESSAGE',
     payload: data
   }
 }
 
-const setUserEmailInputErrorMessage = (data) => {
+export const setUserEmailInputErrorMessage = (data) => {
   return {
     type: 'SET_USER_EMAIL_INPUT_ERROR_MESSAGE',
     payload: data
   }
 }
 
-const setUserWAInputErrorMessage = (data) => {
+export const setUserWAInputErrorMessage = (data) => {
   return {
     type: 'SET_USER_WA_INPUT_ERROR_MESSAGE',
     payload: data

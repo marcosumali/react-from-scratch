@@ -69,11 +69,6 @@ const userData = (state = { ...initialState }, action) => {
         ...state,
         isRegistrationLoading: action.payload,
       })
-    case 'HELLO_SAGA':
-      return({
-        ...state,
-        name: 'hello'
-      })
     default:
       return state;
   }
