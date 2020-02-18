@@ -17,9 +17,9 @@ This is a proof of concept demonstrating web application using react from scratc
 
 ### Steps To Replicate
 1. Create a new folder and initiate an npm to create a package file.
-```
-npm init
-```
+   ```
+   npm init
+   ```
 2. Install required and/or optional development dependencies:
    * Required packages for webpack applications:
      - webpack: module bundler
@@ -70,12 +70,18 @@ npm init
    * define rules for modules and loaders
    * optimizations (if necessary)
 6. Update script tag on package JSON file for start and build
-```
-  "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
-  },
-```
+   ```
+   "scripts": {
+      "start": "webpack-dev-server --mode development --open --hot",
+      "build": "webpack --mode production"
+   },
+   ```
+7. Create a babelrc file to set the presets for babel OR set it in the webpack configuration files.
+   ```
+   {
+     "presets": ["@babel/env", "@babel/react"]
+   }
+   ```
 7. Create src folder for our source entry point
 8. Inside the src folder, create the following file:
    * index.html: need to provide an element with id of 'App'
