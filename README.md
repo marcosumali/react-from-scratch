@@ -59,12 +59,18 @@ This is a proof of concept demonstrating web application using react from scratc
 4. Create gitignore file to ignore node modules, production folder and env files
 5. Create webpack configuration file and provide the following configuration:
    * entry point
-   * ouput path and filename
+   * ouput: path, filename, and public path
    * plugins
    * resolve extensions for JSX files
    ```
    resolve: {
       extensions: ['*', '.js', '.jsx']
+   },
+   ```
+   * define devServer method (for routing purposes)
+   ```
+   devServer: {
+      historyApiFallback: true,
    },
    ```
    * define rules for modules and loaders
