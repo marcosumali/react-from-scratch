@@ -62,6 +62,11 @@ npm init
    * ouput path and filename
    * plugins
    * resolve extensions for JSX files
+   ```
+   resolve: {
+      extensions: ['*', '.js', '.jsx']
+   },
+   ```
    * define rules for modules and loaders
    * optimizations (if necessary)
 6. Update script tag on package JSON file for start and build
